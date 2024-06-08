@@ -29,6 +29,10 @@ function validateFileTypeAndDimensions(validWidth, validHeight, inputFileId) {
 }
 
 
+document.getElementById("colorPicker").addEventListener("input", function() {
+    document.getElementById("colorValue").textContent = this.value;
+});
+
 
      
 

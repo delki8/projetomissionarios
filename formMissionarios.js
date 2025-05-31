@@ -27,10 +27,6 @@ function validateFileTypeAndDimensions(validWidth, validHeight, inputFileId) {
 }
 
 
-document.getElementById("colorPicker").addEventListener("input", function() {
-    document.getElementById("colorValue").textContent = this.value;
-});
-
 // Server URL selector functionality
 document.addEventListener('DOMContentLoaded', function() {
   const serverUrlSelector = document.getElementById('serverUrl');
@@ -45,23 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Color picker functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const colorPicker = document.getElementById('colorPicker');
   const hexColor = document.getElementById('hexColor');
   const colorValue = document.getElementById('colorValue');
   const colorPreviewBox = document.getElementById('colorPreviewBox');
   
-  // Initialize hex input with color picker value
-  hexColor.value = colorPicker.value;
+  // Initialize with default color
+  const defaultColor = '#000000';
+  hexColor.value = defaultColor;
+  colorValue.textContent = defaultColor;
+  colorPreviewBox.style.backgroundColor = defaultColor;
   
-  // Update color preview and hex input when color picker changes
-  colorPicker.addEventListener('input', function() {
-    const newColor = colorPicker.value;
-    colorValue.textContent = newColor;
-    hexColor.value = newColor;
-    colorPreviewBox.style.backgroundColor = newColor;
-  });
-  
-  // Update color picker and preview when hex input changes
+  // Update color preview when hex input changes
   hexColor.addEventListener('input', function() {
     let value = hexColor.value;
     
@@ -73,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Validate hex color
     if (/^#[0-9A-F]{6}$/i.test(value)) {
-      colorPicker.value = value;
       colorValue.textContent = value;
       colorPreviewBox.style.backgroundColor = value;
     }
@@ -85,9 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
       hexColor.value = '#' + hexColor.value;
     }
   });
-  
-  // Initialize color preview
-  colorPreviewBox.style.backgroundColor = colorPicker.value;
 });
 
 // Add this if validateFileTypeAndDimensions function doesn't already exist

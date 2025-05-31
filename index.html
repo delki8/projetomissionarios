@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Missionários</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <h1>Formulário Missionários</h1>
+
+    <div class="server-selection">
+      <label for="serverUrl">Selecione o servidor:</label>
+      <select id="serverUrl">
+        <option value="http://localhost:8080/missions" selected>Servidor Local (localhost:8080)</option>
+        <option value="https://missionmap.devou.com.br:7777/missions">Servidor de Produção</option>
+      </select>
+    </div>
+
+    <form id="missionForm" action="http://localhost:8080/missions" method="post" enctype="multipart/form-data">
+      <div class="form-section">
+        <label for="nomeMissao">Nome da Missão:</label>
+        <input type="text" id="nomeMissao" name="nomeMissao" required>
+        
+        <label for="nomeMissionario">Nome do missionário:</label>
+        <input type="text" id="nomeMissionario" name="nomeMissionario" required>
+
+        <label for="email">Email do missionário:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-section">
+        <label for="memberImg" class="file-input-label">PNG 400x400 que vai ser usado como fotografia do membro na página de suporte da missão:</label>
+        <input type="file" id="memberImg" name="memberImg" class="input-file" onchange="validateFileTypeAndDimensions(400, 400, 'memberImg')" required>
+
+        <label for="profileImg" class="file-input-label">PNG 200x200 pra ser usado como foto do perfil do usuário que fará as publicações:</label>
+        <input type="file" id="profileImg" name="profileImg" class="input-file" onchange="validateFileTypeAndDimensions(200, 200, 'profileImg')" required>
+
+        <label for="missionInform" class="file-input-label">PNG 300x300 logo com fundo transparente para ser usada na tela de informações da missão:</label>
+        <input type="file" id="missionInform" name="logoVertical" class="input-file" onchange="validateFileTypeAndDimensions(300, 300, 'missionInform')" required>
+        
+        <label for="selectedMission" class="file-input-label">PNG 800x200 logo com fundo transparente para ser usada na seleção de missões e no cabeçalho do aplicativo:</label>
+        <input type="file" id="selectedMission" name="logoHorizontal" class="input-file" onchange="validateFileTypeAndDimensions(800, 200, 'selectedMission')" required>
+      </div>
+
+      <div class="form-section">
+        <label for="colorPicker">Selecionar uma cor de referência para fundo do cabeçalho e da seleção da missão:</label>
+        <div class="color-input-container">
+          <input type="color" id="colorPicker" name="backgroundColor">
+          <input type="text" id="hexColor" placeholder="#000000" maxlength="7">
+          <div id="colorPreviewBox" class="color-preview-box"></div>
+        </div>
+        <div class="color-preview">
+          O valor HEX da cor selecionada é: <span id="colorValue">#000000</span>
+        </div>
+
+        <label for="missionDescription">Descrição da missão em 1 ou 2 parágrafos:</label>
+        <textarea id="missionDescription" name="missionDescription" required></textarea>
+      </div>
+      
+      <div>
+        <label for="chavePix">Chave Pix</label>
+        <input type="text" id="chavePix" name="chavepix" class="input-finan" required>
+
+        <label for="banco">Banco</label>
+        <input type="text" id="banco" name="banco" class="input-finan">
+
+        <div class="form-row">
+          <div>
+            <label for="agencia">Agência</label>
+            <input type="text" id="agencia" name="agencia" class="input-finan">
+          </div>
+          
+          <div>
+            <label for="conta">Conta</label>
+            <input type="text" id="conta" name="conta" class="input-finan">
+          </div>
+        </div>
+        
+        <label for="nomeTitular">Nome do titular da conta</label>
+        <input type="text" id="nomeTitular" name="nomeTitular" class="input-finan">
+      </div>
+      
+      <label for="youtubeLink">Link do YouTube com algum vídeo promocional/apresentação da Missão:</label>
+      <input type="url" id="youtubeLink" name="youtubeLink" placeholder="https://www.youtube.com/">
+
+      <button type="submit" id="submeterFormulario">Submeter Formulário</button>
+    </form>
+
+    <script src="formMissionarios.js"></script>
+  </body>
+</html>

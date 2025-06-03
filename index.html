@@ -24,20 +24,39 @@
         <label for="nomeMissao">Nome da Missão:</label>
         <input type="text" id="nomeMissao" name="nomeMissao" required>
         
-        <label for="nomeMissionario">Nome do missionário:</label>
-        <input type="text" id="nomeMissionario" name="nomeMissionario" required>
+        <div class="checkbox-container">
+          <input type="checkbox" id="underPressure" name="underPressure" value="true">
+          <label for="underPressure">Em Contexto de Perseguição</label>
+        </div>
+        
+        <h3>Missionário 1</h3>
+        <label for="nomeMissionario1">Nome do missionário 1:</label>
+        <input type="text" id="nomeMissionario1" name="nomeMissionario1" required>
 
-        <label for="email">Email do missionário:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="email1">Email do missionário 1:</label>
+        <input type="email" id="email1" name="email1" required>
+
+        <label for="memberImg1" class="file-input-label">PNG 400x400 - Foto do missionário 1:</label>
+        <input type="file" id="memberImg1" name="memberImg1" class="input-file" onchange="validateFileTypeAndDimensions(400, 400, 'memberImg1')" required>
+
+        <label for="profileImg1" class="file-input-label">PNG 200x200 pra ser usado como foto do perfil do usuário que fará as publicações:</label>
+        <input type="file" id="profileImg1" name="profileImg1" class="input-file" onchange="validateFileTypeAndDimensions(200, 200, 'profileImg1')" required>
+
+        <h3>Missionário 2</h3>
+        <label for="nomeMissionario2">Nome do missionário 2:</label>
+        <input type="text" id="nomeMissionario2" name="nomeMissionario2" required>
+
+        <label for="email2">Email do missionário 2:</label>
+        <input type="email" id="email2" name="email2">
+
+        <label for="memberImg2" class="file-input-label">PNG 400x400 - Foto do missionário 2:</label>
+        <input type="file" id="memberImg2" name="memberImg2" class="input-file" onchange="validateFileTypeAndDimensions(400, 400, 'memberImg2')" required>
+
+        <label for="profileImg2" class="file-input-label">PNG 200x200 pra ser usado como foto do perfil do usuário que fará as publicações:</label>
+        <input type="file" id="profileImg2" name="profileImg2" class="input-file" onchange="validateFileTypeAndDimensions(200, 200, 'profileImg2')">
       </div>
-      
+
       <div class="form-section">
-        <label for="memberImg" class="file-input-label">PNG 400x400 que vai ser usado como fotografia do membro na página de suporte da missão:</label>
-        <input type="file" id="memberImg" name="memberImg" class="input-file" onchange="validateFileTypeAndDimensions(400, 400, 'memberImg')" required>
-
-        <label for="profileImg" class="file-input-label">PNG 200x200 pra ser usado como foto do perfil do usuário que fará as publicações:</label>
-        <input type="file" id="profileImg" name="profileImg" class="input-file" onchange="validateFileTypeAndDimensions(200, 200, 'profileImg')" required>
-
         <label for="missionInform" class="file-input-label">PNG 300x300 logo com fundo transparente para ser usada na tela de informações da missão:</label>
         <input type="file" id="missionInform" name="logoVertical" class="input-file" onchange="validateFileTypeAndDimensions(300, 300, 'missionInform')" required>
         
@@ -62,6 +81,9 @@
       <div>
         <label for="chavePix">Chave Pix</label>
         <input type="text" id="chavePix" name="chavepix" class="input-finan" required>
+
+        <label for="btcAddress">Endereço Bitcoin</label>
+        <input type="text" id="btcAddress" name="btcAddress" class="input-finan">
 
         <label for="banco">Banco</label>
         <input type="text" id="banco" name="banco" class="input-finan">

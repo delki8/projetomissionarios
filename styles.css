@@ -56,13 +56,83 @@ textarea {
 }
 
 input[type="file"] {
+  width: 100%;
+  padding: 16px 20px;
   margin: 8px 0 20px 0;
-  padding: 10px 0;
+  border: 2px dashed #007BFF;
+  border-radius: 8px;
+  background-color: #f8f9ff;
+  cursor: pointer;
+  font-size: 16px;
+  color: #0056b3;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-#colorPicker {
-  height: 40px;
-  cursor: pointer;
+input[type="file"]:hover {
+  border-color: #0056b3;
+  background-color: #e6f2ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: #0056b3;
+  background-color: #e6f2ff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Custom file upload styling */
+.file-input-label {
+  font-weight: 600;
+  color: #0056b3;
+  margin-bottom: 8px;
+  display: block;
+  font-size: 16px;
+}
+
+/* Style for when a file is selected */
+input[type="file"]:valid {
+  border-color: #28a745;
+  background-color: #f0fff4;
+  color: #155724;
+}
+
+/* File input container styling */
+.form-subsection input[type="file"],
+.form-section input[type="file"] {
+  background: linear-gradient(135deg, #f8f9ff 0%, #e6f2ff 100%);
+  border: 2px dashed #007BFF;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.form-subsection input[type="file"]:hover,
+.form-section input[type="file"]:hover {
+  background: linear-gradient(135deg, #e6f2ff 0%, #cce7ff 100%);
+  border-color: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.2);
+}
+
+/* Add some visual feedback for file selection */
+input[type="file"]:not(:placeholder-shown) {
+  border-style: solid;
+  background: linear-gradient(135deg, #f0fff4 0%, #d4edda 100%);
+  border-color: #28a745;
+  color: #155724;
 }
 
 .color-input-container {
@@ -96,11 +166,6 @@ input[type="file"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #000000;
-}
-
-.color-preview {
-  margin-bottom: 20px;
-  font-size: 14px;
 }
 
 details {
@@ -141,7 +206,7 @@ details[open] summary {
   flex: 1;
 }
 
-button[type="submit"] {
+button {
   background-color: #007BFF;
   color: white;
   padding: 12px 25px;
@@ -155,18 +220,124 @@ button[type="submit"] {
   transition: background-color 0.3s, transform 0.2s;
 }
 
-button[type="submit"]:hover {
+button:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
 
 .form-section {
-  margin-bottom: 25px;
+  margin-bottom: 35px;
+  padding: 25px;
+  background-color: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-.file-input-label {
+.form-section:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.form-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #0056b3;
+  font-size: 22px;
+  font-weight: 700;
+  border-bottom: 3px solid #007BFF;
+  padding-bottom: 10px;
+  background-color: #fff;
+  padding: 10px 15px;
+  margin: -25px -25px 20px -25px;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 3px solid #007BFF;
+}
+
+.form-section h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  color: #495057;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #e9ecef;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border-left: 4px solid #007BFF;
+}
+
+.form-section p {
+  margin-bottom: 15px;
+  color: #6c757d;
   font-size: 14px;
-  color: #555;
+  line-height: 1.6;
+  padding: 10px;
+  background-color: #e3f2fd;
+  border-radius: 6px;
+  border-left: 4px solid #2196f3;
+}
+
+/* Add distinction between form sections */
+.form-section + .form-section {
+  border-top: 4px solid #007BFF;
+  margin-top: 40px;
+}
+
+/* Special styling for the first form section (mission info) */
+.form-section:first-of-type {
+  background-color: #f0f8ff;
+  border: 2px solid #b3d9ff;
+}
+
+/* Special styling for financial section */
+.form-section:last-of-type {
+  background-color: #f0f8ff;
+  border: 2px solid #b3d9ff;
+}
+
+/* Form subsection styling for missionaries */
+.form-subsection {
+  background-color: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.form-subsection:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #28a745;
+  border-radius: 4px 0 0 4px;
+}
+
+.form-subsection h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #28a745;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #28a745;
+}
+
+.form-subsection:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.form-subsection:nth-child(even):before {
+  background-color: #fd7e14;
+}
+
+.form-subsection:nth-child(even) h4 {
+  color: #fd7e14;
+  border-bottom-color: #fd7e14;
 }
 
 /* Server selection styling */
@@ -211,4 +382,12 @@ button[type="submit"]:hover {
   cursor: pointer;
   font-weight: normal;
   color: #555;
+}
+
+/* Required field asterisk styling */
+.required-asterisk {
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 3px;
 }

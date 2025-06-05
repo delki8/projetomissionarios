@@ -19,67 +19,78 @@
       </select>
     </div>
 
-    <form id="missionForm" action="http://localhost:8080/missions" method="post" enctype="multipart/form-data">
+    <form id="missionForm" enctype="multipart/form-data">
+      <label for="authToken">Token de Autenticação: <span class="required-asterisk">*</span></label>
+      <input type="password" id="authToken" placeholder="Bearer token" >
+
       <div class="form-section">
-        <label for="nomeMissao">Nome da Missão:</label>
+        <h2>Informações Gerais</h2>
+        <label for="nomeMissao">Nome da Missão: <span class="required-asterisk">*</span></label>
         <input type="text" id="nomeMissao" name="nomeMissao" required>
-        
+
         <div class="checkbox-container">
           <input type="checkbox" id="underPressure" name="underPressure" value="true">
           <label for="underPressure">Em Contexto de Perseguição</label>
         </div>
         
-        <h3>Missionário 1</h3>
-        <label for="nomeMissionario1">Nome do missionário 1:</label>
-        <input type="text" id="nomeMissionario1" name="nomeMissionario1" required>
-
-        <label for="email1">Email do missionário 1:</label>
-        <input type="email" id="email1" name="email1" required>
-
-        <label for="memberImg1" class="file-input-label">PNG 400x400 - Foto do missionário 1:</label>
-        <input type="file" id="memberImg1" name="memberImg1" class="input-file" onchange="validateFileTypeAndDimensions(400, 400, 'memberImg1')" required>
-
-        <label for="profileImg1" class="file-input-label">PNG 200x200 pra ser usado como foto do perfil do usuário que fará as publicações:</label>
-        <input type="file" id="profileImg1" name="profileImg1" class="input-file" onchange="validateFileTypeAndDimensions(200, 200, 'profileImg1')" required>
-
-        <h3>Missionário 2</h3>
-        <label for="nomeMissionario2">Nome do missionário 2:</label>
-        <input type="text" id="nomeMissionario2" name="nomeMissionario2" required>
-
-        <label for="email2">Email do missionário 2:</label>
-        <input type="email" id="email2" name="email2">
-
-        <label for="memberImg2" class="file-input-label">PNG 400x400 - Foto do missionário 2:</label>
-        <input type="file" id="memberImg2" name="memberImg2" class="input-file" onchange="validateFileTypeAndDimensions(400, 400, 'memberImg2')" required>
-
-        <label for="profileImg2" class="file-input-label">PNG 200x200 pra ser usado como foto do perfil do usuário que fará as publicações:</label>
-        <input type="file" id="profileImg2" name="profileImg2" class="input-file" onchange="validateFileTypeAndDimensions(200, 200, 'profileImg2')">
-      </div>
-
-      <div class="form-section">
-        <label for="missionInform" class="file-input-label">PNG 300x300 logo com fundo transparente para ser usada na tela de informações da missão:</label>
-        <input type="file" id="missionInform" name="logoVertical" class="input-file" onchange="validateFileTypeAndDimensions(300, 300, 'missionInform')" required>
+        <label for="missionInform" class="file-input-label">PNG 300x300 logo com fundo transparente para ser usada na tela de informações da missão: <span class="required-asterisk">*</span></label>
+        <input type="file" id="missionInform" name="logoVertical" class="input-file" required>
         
-        <label for="selectedMission" class="file-input-label">PNG 800x200 logo com fundo transparente para ser usada na seleção de missões e no cabeçalho do aplicativo:</label>
-        <input type="file" id="selectedMission" name="logoHorizontal" class="input-file" onchange="validateFileTypeAndDimensions(800, 200, 'selectedMission')" required>
-      </div>
+        <label for="selectedMission" class="file-input-label">PNG 800x200 logo com fundo transparente para ser usada na seleção de missões e no cabeçalho do aplicativo: <span class="required-asterisk">*</span></label>
+        <input type="file" id="selectedMission" name="logoHorizontal" class="input-file" required>
 
-      <div class="form-section">
         <label for="hexColor">Selecionar uma cor de referência para fundo do cabeçalho e da seleção da missão:</label>
         <div class="color-input-container">
           <input type="text" id="hexColor" name="backgroundColor" placeholder="#000000" maxlength="7">
           <div id="colorPreviewBox" class="color-preview-box"></div>
         </div>
-        <div class="color-preview">
-          O valor HEX da cor selecionada é: <span id="colorValue">#000000</span>
-        </div>
 
-        <label for="missionDescription">Descrição da missão em 1 ou 2 parágrafos:</label>
+        <label for="missionDescription">Descrição da missão em 1 ou 2 parágrafos: <span class="required-asterisk">*</span></label>
         <textarea id="missionDescription" name="missionDescription" required></textarea>
+
+        <label for="youtubeLink">Link do YouTube com algum vídeo promocional/apresentação da Missão:</label>
+        <input type="url" id="youtubeLink" name="youtubeLink" placeholder="https://www.youtube.com/">
       </div>
       
-      <div>
-        <label for="chavePix">Chave Pix</label>
+      <div class="form-section">
+        <h2>Informações dos Missionários</h2>
+        <p>Preencha os dados dos missionários que irão gerenciar a missão. O primeiro missionário será o administrador principal.</p>
+        <p>As fotos dos missionários devem ser PNG com fundo transparente, sendo 400x400 para a foto do missionário e 200x200 para a foto do perfil do usuário que fará as publicações.</p>
+        
+        <div class="form-subsection">
+          <h4>Missionário 1 (Administrador Principal)</h4>
+          <label for="nomeMissionario1">Nome do missionário 1: <span class="required-asterisk">*</span></label>
+          <input type="text" id="nomeMissionario1" name="nomeMissionario1" required>
+
+          <label for="email1">Email do missionário 1: <span class="required-asterisk">*</span></label>
+          <input type="email" id="email1" name="email1" required>
+
+          <label for="memberImg1" class="file-input-label">PNG 400x400: <span class="required-asterisk">*</span></label>
+          <input type="file" id="memberImg1" name="memberImg1" class="input-file" required>
+
+          <label for="profileImg1" class="file-input-label">PNG 200x200: <span class="required-asterisk">*</span></label>
+          <input type="file" id="profileImg1" name="profileImg1" class="input-file" required>
+        </div>
+
+        <div class="form-subsection">
+          <h4>Missionário 2</h4>
+          <label for="nomeMissionario2">Nome do missionário 2: <span class="required-asterisk">*</span></label>
+          <input type="text" id="nomeMissionario2" name="nomeMissionario2" required>
+
+          <label for="email2">Email do missionário 2:</label>
+          <input type="email" id="email2" name="email2">
+
+          <label for="memberImg2" class="file-input-label">PNG 400x400: <span class="required-asterisk">*</span></label>
+          <input type="file" id="memberImg2" name="memberImg2" class="input-file" required>
+
+          <label for="profileImg2" class="file-input-label">PNG 200x200:</label>
+          <input type="file" id="profileImg2" name="profileImg2" class="input-file">
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <h2>Contato Financeiro</h2>
+        <label for="chavePix">Chave Pix <span class="required-asterisk">*</span></label>
         <input type="text" id="chavePix" name="chavepix" class="input-finan" required>
 
         <label for="btcAddress">Endereço Bitcoin</label>
@@ -103,9 +114,6 @@
         <label for="nomeTitular">Nome do titular da conta</label>
         <input type="text" id="nomeTitular" name="nomeTitular" class="input-finan">
       </div>
-      
-      <label for="youtubeLink">Link do YouTube com algum vídeo promocional/apresentação da Missão:</label>
-      <input type="url" id="youtubeLink" name="youtubeLink" placeholder="https://www.youtube.com/">
 
       <button type="submit" id="submeterFormulario">Submeter Formulário</button>
     </form>
